@@ -1,3 +1,38 @@
+Eclipse shortcuts
+
+Ctrl + Shift + T for finding class even from jar
+
+Ctrl + Shift + R for finding any resource (file), including config XML files
+
+Ctrl H search in workspace
+
+Ctrl + Shift + o for organize imports
+
+Ctrl + o for quick outline going quickly to a method
+
+Alt + right and Alt + left for going back and forth while editing
+
+Ctrl + Shift + Up and down for navigating from member to member (variables and methods)
+
+Go to a type declaration: F3, this Eclipse shortcut is very useful to see function definition very quickly.
+
+Ctrl + Shift + / for commenting, uncommenting lines with block comment
+
+Selecting class and pressing F4 to see its Type hierarchy
+
+Ctrl + Q for going to last edited place
+
+Ctrl + T for toggling between supertype and subtype
+
+Go to other open editors: Ctrl + E
+
+CTRL+Shift+G, which searches the workspace for references to the selected method or variable
+
+Ctrl+Shift+L to view the listing for all Eclipse keyboard shortcuts
+
+Alt + Shift + j to add Javadoc at any place in Java source file
+
+
 Javasaker
 ---------------------------------------------------------------------------------------------------------------------------------------
 Unchecked Exception in Java is those Exceptions whose handling is NOT verified during Compile time.
@@ -123,13 +158,6 @@ log.debug("ska logga att {} sparas", str). Görs så att det bara händer när loggn
 ---------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------
-Design patterns
----------------------------------------------------------------------------------------------------------------------------------------
-Effective java
----------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------
 Linux interview q
@@ -233,7 +261,5 @@ Deploy on kubernetes
 minikube, testversion av kubernetes (minikube start, startar upp kluster). Peka mot ett visst kluster man vill arbeta mot.
 cube ctl kommand line tool för att interagera med kubernetes cluster
 
-
 -
 https://www.youtube.com/watch?v=fqMOX6JJhGo:
-
