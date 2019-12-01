@@ -1,0 +1,239 @@
+Javasaker
+---------------------------------------------------------------------------------------------------------------------------------------
+Unchecked Exception in Java is those Exceptions whose handling is NOT verified during Compile time.
+These exceptions occurs because of bad programming.
+The program won't give a compilation error. All Unchecked exceptions are direct sub classes of RuntimeException class.
+
+Important points to remember about throws keyword:
+
+    throws keyword is required only for checked exception and usage of throws keyword for unchecked exception is meaningless.
+    throws keyword is required only to convince compiler and usage of throws keyword does not prevent abnormal termination of program.
+    By the help of throws keyword we can provide information to the caller of the method about the exception.
+
+RuntimeException är unchecked. Händer i oförutsädda händelser. När man inte vet hur man ska hatenra dom
+
+Exception är checked. anv när man vet hur man deal med dom. Bra att köra validation innan så man märker dom.
+---------------------------------------------------------------------------------------------------------------------------------------
+JMS
+---------------------------------------------------------------------------------------------------------------------------------------
+npm. Node package manager. För nodejs, javascript och frontendsaker
+---------------------------------------------------------------------------------------------------------------------------------------
+spring mvc hör till web project
+---------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------
+C:\Users\John\Downloads\tdd-with-spring-boot-master cheatsheet
+---------------------------------------------------------------------------------------------------------------------------------------
+Eclipse sts tut
+---------------------------------------------------------------------------------------------------------------------------------------
+@GetMapping i controller. Svar
+
+@GetMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
+
+@GetMapping is the newer annotaion. It supports consumes
+---------------------------------------------------------------------------------------------------------------------------------------
+
+@Bean https://www.youtube.com/watch?v=HLSmjZ5vN0w&list=PLVApX3evDwJ1d0lKKHssPQvzv2Ao3e__Q&index=15 7.42
+
+Kolla här https://www.baeldung.com/spring-bean
+
+In Spring, the objects that form the backbone of your application and that are managed by the Spring IoC container are called beans.
+A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
+
+Bean, skapas en singleton i springboot container
+---------------------------------------------------------------------------------------------------------------------------------------
+Sön
+blandade tut
+
+200 sidor springboot doc
+
+ssha in på git
+
+SSL SSH key till Git. Skapa genom att röra musen
+https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key
+https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+http://guides.beanstalkapp.com/version-control/git-on-windows.html
+
+*Lägg till ssh till min lokala dator och github. Ändra så att jag connectar med ssh till existerande projekt.
+*Har inte git-bash , ssh agent
+
+Använd pageant som ssh agent istället
+
+---------------------------------------------------------------------------------------------------------------------------------------
+InversionOfControl
+
+Simply put, Inversion of Control, or IoC for short, is a process in which an object defines its dependencies without creating them.
+This object delegates the job of constructing such dependencies to an IoC container.
+
+Let's start with the declaration of a couple of domain classes before diving into IoC.
+---------------------------------------------------------------------------------------------------------------------------------------
+Dependency injection
+
+---------------------------------------------------------------------------------------------------------------------------------------
+springApplication.run :->> Skapar containern
+
+---------------------------------------------------------------------------------------------------------------------------------------
+När Scope blir prototype, så blir objekten ej singletons. Annars är dom singleton..?
+Sätter man Scope(value="prototype") så bildas dom bara när man anropar den, tex med autowire.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+SpringBoot @Configuration.
+As of Spring Boot 2.2, Spring finds and registers @ConfigurationProperties classes via classpath scanning. Sker automatiskt, behöver ej scannas vid application.run. Therefore, 
+there is no need to annotate such classes with @Component (and other meta-annotations like @Configuration) or even use the @EnableConfigurationProperties:
+
+@ConfigurationProperties(prefix = "mail") 
+public class ConfigProperties { 
+
+    private String hostName; 
+    private int port; 
+    private String from; 
+
+    // standard getters and setters 
+}
+
+The classpath scanner enabled by @SpringBootApplication finds the ConfigProperties class, even though we didn't annotate this class with @Component.
+
+Also, we can use the @ConfigurationPropertiesScan annotation to scan custom locations for configuration property classes:
+
+@SpringBootApplication
+@ConfigurationPropertiesScan("com.baeldung.properties")
+public class DemoApplication { 
+
+    public static void main(String[] args) {   
+        SpringApplication.run(DemoApplication.class, args); 
+    } 
+}
+
+This way Spring will look for configuration property classes only in the com.baeldung.properties package.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+@JSONproperty för att få req från postman att bli reqbody. Amigoscode sms.
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+Logging. Logging frameworks:
+Slfj (Log4j) eller Logback. Logback nyare , bättre. Används i kombination.
+
+Sätt in dessa 2 dep i pomfilen.
+
+log.debug("ska logga att {} sparas", str). Görs så att det bara händer när loggning är på. Sparar massa tid.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+Design patterns
+---------------------------------------------------------------------------------------------------------------------------------------
+Effective java
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+Linux interview q
+
+1. Vilken kernel version?
+uname -a
+
+2. Ip adress?
+ip addr show
+
+3. Hur mkt disk space kvar?
+df -ah
+
+4. Vilka services finns?
+systemctl status
+
+5. Open ports in linux machine?
+netstat -tulpn
+
+6.Cpu användning, processes
+top
+
+7. Mounta ny hd, usb stick
+ls /mnt
+mount /dev/sda2 /mnt
+
+existerande: mount
+
+8. Hur komma upp saker?
+
+help ps, tex hjälp om ps
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+Java8 strems
+
+Functional interfaces are interfaces that represents some functionality (not the actual data)
+
+Functional interfaces have single abstract method
+Functional interfaces help enable lambda in java8
+Lambda  förkortar impl av func interfaces
+Bra; https://www.youtube.com/watch?v=lX0PzE0Dho0 (Predicate, Consumer, Supplier, Function : interfaces)
+
+default framför en metod i ett vanligt interface , gör att man kan implementera den i interfacet!
+
+Class x extends b impl c, så kommer metod köras i b om den också finns i c. Arv går före interface. Third rule.
+
+List<Integer> vaöues = Arrays.asList(1,2,3,4,5,6,7);
+values.forEach(System.out::println) :--> Method reference. Metod som parameter.
+
+values.forEach(i -> doubleIt(i)) :--> Method reference. Metod som parameter.
+values.forEach(i -> MinKlass::doubleIt) :--> Method reference. Metod som parameter
+
+Använd filter först. Sedna map, sort etc, snabbar upp.
+Använd parallellstream för mkt stora mängder
+
+Terminal operations:
+forEach (använd samma funktion på varje element)
+collect - > tillbaks som en lista
+
+count(), max(), min(), reduce(), summarystatistics()
+
+
+Javasaker2
+Stateful/Stateless
+
+What are Stateful and Stateless applications?
+
+Stateful and Stateless applications store state from client requests on the server itself and use that state to process further requests.
+It uses DB for storing data as a backend, but session information stored on the server itself. When a user sends a login request,
+it enables login to be true and user authenticated now, and on the second request, the user sees the dashboard. Stateful applications don’t need to make a 
+call to DB second time as session info stored on the server itself, hence it is faster. But it does have drawbacks. Let’s say there is a load balancer and there are two servers behind, 
+running the same Stateful application. The now first request to log in go to server 1 and second request might go to server 2, now since only server one has enabled login to true,
+the user won’t be able to logic when LB sends him to 2nd server. So it’s not possible to horizontally scale Stateful applications.
+
+While Stateless applications work in different ways. They don’t store any state on the server. 
+They use DB to store all the Info. Obviously, DB is stateful, i.e. it has persistent storage attached to it.
+
+https://www.xenonstack.com/insights/stateful-and-stateless-applications/
+
+-
+
+-
+amigacode dockercontainers:
+
+docker ps: Listar också vilka containers som körs. Snabbare och preferred
+
+-p 8080:80 betyder: Containers kör port 80, vi vill se det i loclhost med 8080
+-p 3000:80 betyder: Containers kör port 80, vi vill se det i loclhost med 3000
+
+docker run -d -p 3000:80 -p 8080:80 nginx:latest -> detached, port 3000 och 8080 utåt.
+
+Namnge containers! Gör det enkelt att skilja dom åt om de är många
+docker run --name my-name -d -p...
+
+docker kill id1 id2 id3 (olika idn som körs)
+
+Deploy on kubernetes
+
+minikube, testversion av kubernetes (minikube start, startar upp kluster). Peka mot ett visst kluster man vill arbeta mot.
+cube ctl kommand line tool för att interagera med kubernetes cluster
+
+
+-
+https://www.youtube.com/watch?v=fqMOX6JJhGo:
+
