@@ -239,6 +239,7 @@ They use DB to store all the Info. Obviously, DB is stateful, i.e. it has persis
 
 https://www.xenonstack.com/insights/stateful-and-stateless-applications/
 
+/////////Docker
 amigacode dockercontainers:
 
 docker ps: Listar också vilka containers som körs. Snabbare och preferred
