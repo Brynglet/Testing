@@ -1,17 +1,13 @@
-import java.util.List;
-
 public class Person {
 
   private final String name;
   private final int age;
   private final Gender gender;
-  private final List<Integer> bonuses;
 
-  public Person(String name, int age, Gender gender, List<Integer> bonuses) {
+  public Person(String name, int age, Gender gender) {
     this.name = name;
     this.age = age;
     this.gender = gender;
-    this.bonuses = bonuses;
   }
 
   public String getName() {
@@ -26,9 +22,12 @@ public class Person {
     return gender;
   }
 
-	@Override
-	public String toString() {
-		return "Person [name=" + name + ", age=" + age + ", gender=" + gender + ", bonuses=" + bonuses + "]";
-	}
-
+  @Override
+  public String toString() {
+    return "Person{" +
+        "name='" + name + '\'' +
+        ", age=" + age +
+        ", gender=" + gender +
+        '}';
+  }
 }
