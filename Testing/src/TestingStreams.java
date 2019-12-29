@@ -8,6 +8,8 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -83,6 +85,29 @@ public class TestingStreams {
 			.count();
 		System.out.println(rowCount + " rows.");
 		rows1.close();
+
+		Math.random();
+
+		/* Predicate */
+		List<String> names5 = Arrays.asList("Angela", "Aaron", "Bob", "Claire", "David");
+
+		List<String> namesWithA = names5.stream()
+		  .filter(name -> name.startsWith("A"))
+		  .sorted()
+		  .collect(Collectors.toList());
+
+		/* Supplier */
+//		 Supplier<Integer> supplier = new Supplier<Integer>() {
+//	            @Override
+//	            public Integer get() {
+//	                //Returns a random value
+//	                return new Random().nextInt();
+//	            }
+//	        };
+
+	        Supplier<Integer> supplier = () -> new Random().nextInt();
+	        System.out.println(supplier.get());
+
 
 //		// 11. Stream rows from CSV file, parse data from rows
 //		Stream<String> rows2 = Files.lines(Paths.get("data.txt"));
