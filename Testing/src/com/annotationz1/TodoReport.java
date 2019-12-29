@@ -6,7 +6,7 @@
  *
  */
 
-package com.annotationz;
+package com.annotationz1;
 import java.lang.reflect.Method;
 
 public class TodoReport {

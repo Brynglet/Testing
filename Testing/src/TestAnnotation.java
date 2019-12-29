@@ -1,6 +1,10 @@
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
+import com.annotationz2.AnnotationExample;
+import com.annotationz2.CustomMethodAnno;
+import com.annotationz2.CustomTypeAnno;
+
 public class TestAnnotation {
 
 	public static void main(String[] args) {

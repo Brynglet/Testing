@@ -6,7 +6,7 @@
  *
  */
 
-package com.annotationz;
+package com.annotationz1;
 
 public class BusinessLogic {
     public BusinessLogic() {

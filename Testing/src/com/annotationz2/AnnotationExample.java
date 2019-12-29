@@ -1,3 +1,4 @@
+package com.annotationz2;
 
 @CustomTypeAnno(priority = CustomTypeAnno.Priority.HIGH, tags = {"tag1","tag2"}, createdBy = "jb")
 public class AnnotationExample {

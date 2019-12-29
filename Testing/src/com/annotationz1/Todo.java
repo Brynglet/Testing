@@ -6,7 +6,7 @@
  *
  */
 
-package com.annotationz;
+package com.annotationz1;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
