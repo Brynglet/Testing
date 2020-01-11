@@ -348,8 +348,6 @@ public class TestingStreams {
 	    System.out.println("personsNew:" + personsNew); // Anna Cook och Alex Boz nu 400
 	}
 
-
-
 	private static List<Person> getPeople() {
 		List<Person> list = new ArrayList<Person>();
 		list.add(new Person("Antonio", 20, Gender.MALE));
