@@ -4,6 +4,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
@@ -244,51 +245,6 @@ public class TestingStreams {
 		System.out.println("xx-xx-x-xx-xx-xx-x-xx-xx");
 		System.out.println("xx-xx-x-xx-xx-xx-x-xx-xx");
 
-//	-
-//	   List<ProductOfferingQualificationItem> familyItemList) {
-//
-//	    familyItemList
-//	        .forEach(f -> itemList.stream()
-//	            .filter(i -> i.getId().equals(f.getId()))
-//	            .forEach(i -> {
-//	              i.setQualificationItemResult(f.getQualificationItemResult());
-//	              i.setEligibilityUnavailabilityReason(f.getEligibilityUnavailabilityReason());
-//	            }));
-//	  }
-//	-
-//	   List<String> categoryIds = postRequest.getProductOfferingQualificationItem() är en lista
-//	        .stream()
-//	        .filter(i -> i.getCategory() != null)
-//	        .flatMap(i -> i.getCategory().stream()
-//	            .map(CategoryRef::getId)
-//	            .distinct())
-//	        .distinct()
-//	        .collect(Collectors.toList());
-//	-
-//	productOffering.getBundledProductOffering()
-//	.stream()
-//	.map(BundledProductOfferingRef::getId)
-//	.collect(Collectors.toList())).build();
-//	-
-//	categoryIds list of string
-//	   categoryIds.addAll(item.getCategory().stream()
-//	          .map(CategoryRef::getId)
-//	          .collect(Collectors.toList()));
-//	-
-//	ovanstående är i service,
-//	nedan är FereatedIdentActionUtil
-//	-
-//	    HashSet<FederatedIdHeaderActionType> actionSet = entitlements
-//	        .filter(entitlement -> entitlement.getAction() != null)
-//	        .filter(entitlement ->
-//	            Arrays.stream(FederatedIdHeaderActionType.values())
-//	                .anyMatch(item -> item.getValue().equals(entitlement.getAction().toUpperCase())))
-//	        .map(entitlement -> FederatedIdHeaderActionType
-//	            .valueOf(entitlement.getAction().toUpperCase()))
-//	        .filter(FederatedIdHeaderActionType::isValid)
-//	        .collect(Collectors.toCollection(HashSet::new));
-
-
 		Map<String, Person> personMapStr = getPeople()
 		.stream()
 		.collect(Collectors.toMap(Person::getName, p -> p));
@@ -346,6 +302,23 @@ public class TestingStreams {
         			p.setAge(400);
         		}));
 	    System.out.println("personsNew:" + personsNew); // Anna Cook och Alex Boz nu 400
+
+	    List<Person> persons3 = getPeople();
+
+	    List<Integer> ages =
+		persons3
+		.stream()
+		.map(Person::getAge)
+		.collect(Collectors.toList());
+
+		System.out.println("ages:" + ages);
+
+		    HashSet<Person> actionSet = persons3.stream()
+		        .filter(p -> p.getName() != null)
+		        .collect(Collectors.toCollection(HashSet::new));
+		    System.out.println("actionSet:->>" + actionSet);
+
+
 	}
 
 	private static List<Person> getPeople() {
