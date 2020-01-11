@@ -1,8 +1,8 @@
 public class Person {
 
-  private final String name;
-  private final int age;
-  private final Gender gender;
+  private String name;
+  private int age;
+  private Gender gender;
 
   public Person(String name, int age, Gender gender) {
     this.name = name;
@@ -10,24 +10,34 @@ public class Person {
     this.gender = gender;
   }
 
-  public String getName() {
-    return name;
-  }
+public String getName() {
+	return name;
+}
 
-  public int getAge() {
-    return age;
-  }
+public int getAge() {
+	return age;
+}
 
-  public Gender getGender() {
-    return gender;
-  }
+public Gender getGender() {
+	return gender;
+}
 
-  @Override
-  public String toString() {
-    return "Person{" +
-        "name='" + name + '\'' +
-        ", age=" + age +
-        ", gender=" + gender +
-        '}';
-  }
+public void setName(String name) {
+	this.name = name;
+}
+
+public void setAge(int age) {
+	this.age = age;
+}
+
+public void setGender(Gender gender) {
+	this.gender = gender;
+}
+
+@Override
+public String toString() {
+	return "Person! [name=" + name + ", age=" + age + ", gender=" + gender + "]";
+}
+
+
 }

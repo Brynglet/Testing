@@ -234,7 +234,121 @@ public class TestingStreams {
 		    .range(1, 4)
 		    .forEach(i -> foos.add(new Foo("Foo" + i)));
 */
+
+		    testMore();
 	}
+
+	private static void testMore() {
+
+		System.out.println("xx-xx-x-xx-xx-xx-x-xx-xx");
+		System.out.println("xx-xx-x-xx-xx-xx-x-xx-xx");
+		System.out.println("xx-xx-x-xx-xx-xx-x-xx-xx");
+
+//	-
+//	   List<ProductOfferingQualificationItem> familyItemList) {
+//
+//	    familyItemList
+//	        .forEach(f -> itemList.stream()
+//	            .filter(i -> i.getId().equals(f.getId()))
+//	            .forEach(i -> {
+//	              i.setQualificationItemResult(f.getQualificationItemResult());
+//	              i.setEligibilityUnavailabilityReason(f.getEligibilityUnavailabilityReason());
+//	            }));
+//	  }
+//	-
+//	   List<String> categoryIds = postRequest.getProductOfferingQualificationItem() är en lista
+//	        .stream()
+//	        .filter(i -> i.getCategory() != null)
+//	        .flatMap(i -> i.getCategory().stream()
+//	            .map(CategoryRef::getId)
+//	            .distinct())
+//	        .distinct()
+//	        .collect(Collectors.toList());
+//	-
+//	productOffering.getBundledProductOffering()
+//	.stream()
+//	.map(BundledProductOfferingRef::getId)
+//	.collect(Collectors.toList())).build();
+//	-
+//	categoryIds list of string
+//	   categoryIds.addAll(item.getCategory().stream()
+//	          .map(CategoryRef::getId)
+//	          .collect(Collectors.toList()));
+//	-
+//	ovanstående är i service,
+//	nedan är FereatedIdentActionUtil
+//	-
+//	    HashSet<FederatedIdHeaderActionType> actionSet = entitlements
+//	        .filter(entitlement -> entitlement.getAction() != null)
+//	        .filter(entitlement ->
+//	            Arrays.stream(FederatedIdHeaderActionType.values())
+//	                .anyMatch(item -> item.getValue().equals(entitlement.getAction().toUpperCase())))
+//	        .map(entitlement -> FederatedIdHeaderActionType
+//	            .valueOf(entitlement.getAction().toUpperCase()))
+//	        .filter(FederatedIdHeaderActionType::isValid)
+//	        .collect(Collectors.toCollection(HashSet::new));
+
+
+		Map<String, Person> personMapStr = getPeople()
+		.stream()
+		.collect(Collectors.toMap(Person::getName, p -> p));
+
+		System.out.println("personMap1->" + personMapStr);
+
+		Map<Integer, Person> personMapInt = getPeople()
+        .stream()
+        .collect(Collectors.toMap(Person::getAge, p -> p));
+
+		System.out.println("personMap2->" + personMapInt);
+
+		List<Person> personsSomeOld = getPeople();
+		Person p0 = personsSomeOld.get(0);
+		Person p1 = new Person("jb1", 31, Gender.MALE);
+		Person p2 = new Person("jb2", 32, Gender.MALE);
+
+		Integer count = 0;
+		personsSomeOld.stream()
+		.forEach(item -> {
+
+			boolean isQualificationResultQualified = true;
+			if (isQualificationResultQualified) {
+				if (item.getAge() %2 == 0) {
+					item.setAge(200);
+				}
+			}
+		});
+
+		System.out.println("p1:" + p1);
+		System.out.println("personsSomeOld:" + personsSomeOld);
+//		[Person! [name=Antonio, age=200, gender=MALE], Person! [name=Alina Smith, age=33, gender=FEMALE],
+		//Person! [name=Helen White, age=57, gender=FEMALE], Person! [name=Alex Boz, age=200, gender=MALE],
+		//Person! [name=Jamie Goa, age=99, gender=MALE], Person! [name=Anna Cook, age=7, gender=FEMALE],
+		//Person! [name=Zelda Brown, age=200, gender=FEMALE]]
+
+		List<Person> persons = getPeople();
+	    persons
+        .forEach(
+        		p -> personsSomeOld.stream()
+        		.filter(i -> i.getName().equals(p.getName()) && i.getName().equals("Anna Cook"))
+        		.forEach(i -> {
+        			System.out.println("hej:" + i.getName());
+        			p.setAge(778);
+        		}));
+	    System.out.println("personsiii:" + persons); // Anna Cook nu 778
+
+		List<Person> personsNew = getPeople();
+		personsNew
+        .forEach(
+        		p -> personsSomeOld.stream()
+        		.filter(i -> i.getName().equals(p.getName()) && (i.getName().equals("Anna Cook") || i.getName().equals("Alex Boz")))
+        		.forEach(i -> {
+        			System.out.println("hej:" + i.getName());
+        			p.setAge(400);
+        		}));
+	    System.out.println("personsNew:" + personsNew); // Anna Cook och Alex Boz nu 400
+	}
+
+
 
 	private static List<Person> getPeople() {
 		List<Person> list = new ArrayList<Person>();
