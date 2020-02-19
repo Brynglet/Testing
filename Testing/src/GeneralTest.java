@@ -8,17 +8,21 @@ import java.util.stream.IntStream;
 public class GeneralTest {
 
 	static List<Integer> closestExchane = new ArrayList<>();
+
 	static int changeValue = 64;
+
 	/* Available bills in machine */
 	final List<Integer> moneys = Arrays.asList(100, 50, 20, 5, 1);
 
 	public static void main(String argv[]) {
+
 		GeneralTest gt = new GeneralTest();
 		gt.printChangeArray();
-		System.out.println("closestExchane:" + closestExchane +"= $" + closestExchane.stream().mapToInt(Integer::intValue).sum());
+		System.out.println("Exchane:" + closestExchane +"= $" + closestExchane.stream().mapToInt(Integer::intValue).sum());
 	}
 
 	public void printChangeArray() {
+
 		List<Integer> moneyInMachineBank = getMoneyInMachineBank(true);
 		calculateExchangeToCustomer(moneyInMachineBank, new ArrayList<Integer>());
 	}
@@ -33,6 +37,7 @@ public class GeneralTest {
 
 			if (retSum > closestExchane.stream().mapToInt(Integer::intValue).sum()) {
 				closestExchane = ret;
+				/* TODO break/exit/return when == */
 			}
 		}
 
