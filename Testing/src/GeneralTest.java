@@ -11,13 +11,15 @@ import java.util.stream.IntStream;
  *
  * 1. break/exit/return when ==
  * 2. keep looking for the fewest bills
- * 3. general case where the machine has 1000s of bills. Use 2 data sets, one for the majority and one that is handled in recursion. The ones that are used must be calculated.
+ * 3. general case where the machine has 1000s of bills. Solution: Use 2 data sets, one for the majority and one that is handled in recursion. The ones that are used must be calculated.
  *
  * 4. connect these to the this object (insted of sending them around in the recursion):
  * List<Integer> moneyLeftInMachine, List<Integer> tracker, then calculateExchangeToCustomer has no parameters.
  *
  * 5. CHANGE_VALUE = 122; gives an interesting answer when final List<Integer> moneys = Arrays.asList(100, 40, 7 , 2, 1); and 3 of each:
  * Exchane:[40, 40, 40, 2] = $122. Why not [100 7 7 7 1]?
+ *
+ * Answer it checks 40 40 40 2 before. Proof: final List<Integer> moneys = Arrays.asList(100, 23, 20, 1, 1); and 120 works fine: Exchane:[100, 20] = $120
  */
 public class GeneralTest {
 
