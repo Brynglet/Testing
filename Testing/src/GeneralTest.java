@@ -125,8 +125,8 @@ public class GeneralTest {
 
 		}
 
-		return ret
-				.stream()
+		return ret.stream()
+				.filter(i -> i > 0)
 				.sorted(Comparator.reverseOrder())
 				.collect(Collectors.toList());
 	}
