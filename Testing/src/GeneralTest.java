@@ -5,12 +5,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class GeneralTest {
 
-	static final int CHANGE_VALUE= 423;
+/**
+ * 
+ * Todo; General case where the machine has 1000s of bills. Use 2 data sets, one for the majority and one that is handled in recursion.
+ *
+ */
+public class GeneralTest {
+	
+	
+
+	static final int CHANGE_VALUE= 119;
 
 	/* Available bills in machine ($100 dollar bills, $50 dollar bills etc )*/
-	final List<Integer> moneys = Arrays.asList(100, 50, 20, 5, 1);
+	final List<Integer> moneys = Arrays.asList(300, 40, 7 , 2, 1);
 
 	private List<Integer> closestExchane;
 
@@ -42,6 +50,7 @@ public class GeneralTest {
 					this.setClosestExchane(tracker);
 					/* TODO 1. break/exit/return when == ; 2. keep looking for the fewest bills */
 				}
+				this.setIntitialNumberOfMoneyInMachine(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()).size());
 				calculateExchangeToCustomer(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()), tracker);
 			}
 		}
@@ -95,11 +104,11 @@ public class GeneralTest {
 			 * And let the changeValue be 120 and then 121
 			 */
 
-			List<Integer> hundreds = IntStream.range(0, 2).mapToObj(i -> moneys.get(0)).collect(Collectors.toList());
+			List<Integer> hundreds = IntStream.range(0, 3).mapToObj(i -> moneys.get(0)).collect(Collectors.toList());
 			List<Integer> fifties = IntStream.range(0, 3).mapToObj(i -> moneys.get(1)).collect(Collectors.toList());
 			List<Integer> twenties = IntStream.range(0, 3).mapToObj(i -> moneys.get(2)).collect(Collectors.toList());
 			List<Integer> fives = IntStream.range(0, 3).mapToObj(i -> moneys.get(3)).collect(Collectors.toList());
-			List<Integer> ones = IntStream.range(0, 2).mapToObj(i -> moneys.get(4)).collect(Collectors.toList());
+			List<Integer> ones = IntStream.range(0, 3).mapToObj(i -> moneys.get(4)).collect(Collectors.toList());
 
 			ret.addAll(ones);
 			ret.addAll(fives);
