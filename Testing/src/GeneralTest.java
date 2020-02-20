@@ -5,20 +5,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-
 /**
- * 
- * Todo; General case where the machine has 1000s of bills. Use 2 data sets, one for the majority and one that is handled in recursion.
  *
+ * Todo
+ *
+ * 1. break/exit/return when ==
+ * 2. keep looking for the fewest bills
+ * 3. general case where the machine has 1000s of bills. Use 2 data sets, one for the majority and one that is handled in recursion. The ones that are used must be calculated.
+ *
+ * 4. connect these to the this object (insted of sending them around in the recursion):
+ * List<Integer> moneyLeftInMachine, List<Integer> tracker, then calculateExchangeToCustomer has no parameters.
+ *
+ * 5. CHANGE_VALUE = 122; gives an interesting answer when final List<Integer> moneys = Arrays.asList(100, 40, 7 , 2, 1); and 3 of each:
+ * Exchane:[40, 40, 40, 2] = $122. Why not [100 7 7 7 1]?
  */
 public class GeneralTest {
-	
-	
 
-	static final int CHANGE_VALUE= 119;
+	/* Set to 0 to time the whole thing (recurse everything) if returns and/or breaks/exits are used */
+	static final int CHANGE_VALUE = 120;
 
-	/* Available bills in machine ($100 dollar bills, $50 dollar bills etc )*/
-	final List<Integer> moneys = Arrays.asList(300, 40, 7 , 2, 1);
+	/* Available bills in machine. The number of each one is in putMoneyInMachineBank() */
+	final List<Integer> moneys = Arrays.asList(100, 40, 1 , 1, 1);
 
 	private List<Integer> closestExchane;
 
@@ -31,15 +38,14 @@ public class GeneralTest {
 	}
 
 	public void run() {
-		List<Integer> intitialMoneyInMachineBank = getMoneyInMachineBank(false);
+		List<Integer> intitialMoneyInMachineBank = putMoneyInMachineBank(false);
 		this.setIntitialNumberOfMoneyInMachine(intitialMoneyInMachineBank.size());
-		calculateExchangeToCustomer(intitialMoneyInMachineBank, null);
+		calculateDispense(intitialMoneyInMachineBank, null);
 	}
 
-	private void calculateExchangeToCustomer(List<Integer> moneyLeftInMachine, List<Integer> tracker) {
+	private void calculateDispense(List<Integer> moneyLeftInMachine, List<Integer> tracker) {
 		for (int k = 0; k < moneyLeftInMachine.size(); k++) {
 			if (moneyLeftInMachine.size() == this.getIntitialNumberOfMoneyInMachine()) {
-				/* Reset after reaching highest level */
 				tracker = new ArrayList<>();
 			}
 			if ((moneyLeftInMachine.get(k) + tracker.stream().mapToInt(Integer::intValue).sum()) > CHANGE_VALUE) {
@@ -48,15 +54,14 @@ public class GeneralTest {
 				tracker.add(moneyLeftInMachine.get(k));
 				if (tracker.stream().mapToInt(Integer::intValue).sum() > this.getClosestExchane().stream().mapToInt(Integer::intValue).sum()) {
 					this.setClosestExchane(tracker);
-					/* TODO 1. break/exit/return when == ; 2. keep looking for the fewest bills */
 				}
 				this.setIntitialNumberOfMoneyInMachine(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()).size());
-				calculateExchangeToCustomer(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()), tracker);
+				calculateDispense(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()), tracker);
 			}
 		}
 	}
 
-	private List<Integer> getMoneyInMachineBank(boolean getManyRandom) {
+	private List<Integer> putMoneyInMachineBank(boolean getManyRandom) {
 
 		List<Integer> ret = new ArrayList<Integer>();
 
