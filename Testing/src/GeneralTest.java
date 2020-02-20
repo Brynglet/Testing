@@ -7,63 +7,46 @@ import java.util.stream.IntStream;
 
 public class GeneralTest {
 
-	static final int CHANGE_VALUE= 451;
+	static final int CHANGE_VALUE= 423;
 
 	/* Available bills in machine ($100 dollar bills, $50 dollar bills etc )*/
 	final List<Integer> moneys = Arrays.asList(100, 50, 20, 5, 1);
 
 	private List<Integer> closestExchane;
-	private int numberOfBillsAndCoinsInMachine;
+
+	private int intitialNumberOfMoneyInMachine;
 
 	public static void main(String argv[]) {
-
 		GeneralTest gt = new GeneralTest();
-		gt.setClosestExchane(new ArrayList<>());
-		gt.printChangeArray();
-		System.out.println("Exchane:" + gt.getClosestExchane().stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()) +"= $" + gt.getClosestExchane().stream().mapToInt(Integer::intValue).sum());
+		gt.run();
+		System.out.println("Exchane:" + gt.getClosestExchane().stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()) +" = $" + gt.getClosestExchane().stream().mapToInt(Integer::intValue).sum());
 	}
 
-	public void printChangeArray() {
-
-		List<Integer> moneyInMachineBank = getMoneyInMachineBank(false);
-
-		this.setNumberOfBillsAndCoinsInMachine(moneyInMachineBank.size());
-		calculateExchangeToCustomer(moneyInMachineBank, null);
+	public void run() {
+		List<Integer> intitialMoneyInMachineBank = getMoneyInMachineBank(false);
+		this.setIntitialNumberOfMoneyInMachine(intitialMoneyInMachineBank.size());
+		calculateExchangeToCustomer(intitialMoneyInMachineBank, null);
 	}
 
-	private void calculateExchangeToCustomer(List<Integer> moneyInMachine, List<Integer> ret) {
-
-		for (int k = 0; k < moneyInMachine.size(); k++) {
-
-			if (moneyInMachine.size() == this.getNumberOfBillsAndCoinsInMachine()) {
-				/* Highest level , clear out. */
-				ret = new ArrayList<>();
+	private void calculateExchangeToCustomer(List<Integer> moneyLeftInMachine, List<Integer> tracker) {
+		for (int k = 0; k < moneyLeftInMachine.size(); k++) {
+			if (moneyLeftInMachine.size() == this.getIntitialNumberOfMoneyInMachine()) {
+				/* Reset after reaching highest level */
+				tracker = new ArrayList<>();
 			}
-
-			int retSum = ret.stream().mapToInt(Integer::intValue).sum();
-
-			if ((moneyInMachine.get(k) + retSum) > CHANGE_VALUE) {
+			if ((moneyLeftInMachine.get(k) + tracker.stream().mapToInt(Integer::intValue).sum()) > CHANGE_VALUE) {
 				continue;
 			} else {
-
-				ret.add(moneyInMachine.get(k));
-
-				if (ret.stream().mapToInt(Integer::intValue).sum() > this.getClosestExchane().stream().mapToInt(Integer::intValue).sum()) {
-					this.setClosestExchane(ret);
+				tracker.add(moneyLeftInMachine.get(k));
+				if (tracker.stream().mapToInt(Integer::intValue).sum() > this.getClosestExchane().stream().mapToInt(Integer::intValue).sum()) {
+					this.setClosestExchane(tracker);
 					/* TODO 1. break/exit/return when == ; 2. keep looking for the fewest bills */
 				}
-
-				List<Integer> subList = moneyInMachine.subList(k+1, moneyInMachine.size());
-				calculateExchangeToCustomer(subList, ret);
+				calculateExchangeToCustomer(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()), tracker);
 			}
 		}
 	}
 
-	/**
-	 * getManyRandom false: Get about 10 defined bills/coins
-	 * getManyRandom true: Get 100 random defined bills/coins
-	 * @return
-	 */
 	private List<Integer> getMoneyInMachineBank(boolean getManyRandom) {
 
 		List<Integer> ret = new ArrayList<Integer>();
@@ -133,18 +116,18 @@ public class GeneralTest {
 	}
 
 	public List<Integer> getClosestExchane() {
-		return closestExchane;
+		return closestExchane != null ? closestExchane : new ArrayList<Integer>();
 	}
 
 	public void setClosestExchane(List<Integer> closestExchane) {
 		this.closestExchane = closestExchane;
 	}
 
-	public int getNumberOfBillsAndCoinsInMachine() {
-		return numberOfBillsAndCoinsInMachine;
+	public int getIntitialNumberOfMoneyInMachine() {
+		return intitialNumberOfMoneyInMachine;
 	}
 
-	public void setNumberOfBillsAndCoinsInMachine(int numberOfBillsAndCoinsInMachine) {
-		this.numberOfBillsAndCoinsInMachine = numberOfBillsAndCoinsInMachine;
+	public void setIntitialNumberOfMoneyInMachine(int intitialNumberOfMoneyInMachine) {
+		this.intitialNumberOfMoneyInMachine = intitialNumberOfMoneyInMachine;
 	}
 }
