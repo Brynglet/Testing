@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
  * 1. break/exit/return when ==
  * 2. keep looking for the fewest bills
  * 3. general case where the machine has 1000s of bills. Solution: Use 2 data sets, one for the majority and one that is handled in recursion. The ones that are used must be calculated.
+ * Set CHANGE_VALUE to 0 to time the whole thing (recurse everything) if returns and/or breaks/exits are used
  *
  * 4. connect these to the this object (insted of sending them around in the recursion):
  * List<Integer> moneyLeftInMachine, List<Integer> tracker, then calculateExchangeToCustomer has no parameters.
@@ -23,11 +24,7 @@ import java.util.stream.IntStream;
  */
 public class GeneralTest {
 
-	/* Set to 0 to time the whole thing (recurse everything) if returns and/or breaks/exits are used */
-	static final int CHANGE_VALUE = 120;
-
-	/* Available bills in machine. The number of each one is in putMoneyInMachineBank() */
-	final List<Integer> moneys = Arrays.asList(100, 40, 1 , 1, 1);
+	static final int CHANGE_VALUE = 79;
 
 	private List<Integer> closestExchane;
 
@@ -40,9 +37,9 @@ public class GeneralTest {
 	}
 
 	public void run() {
-		List<Integer> intitialMoneyInMachineBank = putMoneyInMachineBank(false);
-		this.setIntitialNumberOfMoneyInMachine(intitialMoneyInMachineBank.size());
-		calculateDispense(intitialMoneyInMachineBank, null);
+		List<Integer> intitialMoneyInMachine = getInitialMoneyInTheVendingMAchine(false);
+		this.setIntitialNumberOfMoneyInMachine(intitialMoneyInMachine.size());
+		calculateDispense(intitialMoneyInMachine, null);
 	}
 
 	private void calculateDispense(List<Integer> moneyLeftInMachine, List<Integer> tracker) {
@@ -63,9 +60,12 @@ public class GeneralTest {
 		}
 	}
 
-	private List<Integer> putMoneyInMachineBank(boolean getManyRandom) {
+	private List<Integer> getInitialMoneyInTheVendingMAchine(boolean getManyRandom) {
 
 		List<Integer> ret = new ArrayList<Integer>();
+
+		/* Available bills in machine. The number of each one is in putMoneyInMachine() */
+		final List<Integer> moneys = Arrays.asList(100, 40, 1, 1, 1);
 
 		if (getManyRandom == true) {
 
