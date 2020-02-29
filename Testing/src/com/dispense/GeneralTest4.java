@@ -97,6 +97,7 @@ public class GeneralTest4 {
 					if (!tmp.contains(tracker)) {
 						tmp.add(tracker);
 					}
+
 					closestExchaneMap.put(trackerSum, tmp);
 				}
 
@@ -161,11 +162,13 @@ public class GeneralTest4 {
 			 * And let the changeValue be 120 and then 121
 			 */
 
-			List<Integer> hundreds = IntStream.range(0, 10).mapToObj(i -> moneys.get(0)).collect(Collectors.toList());
-			List<Integer> fifties = IntStream.range(0, 10).mapToObj(i -> moneys.get(1)).collect(Collectors.toList());
-			List<Integer> twenties = IntStream.range(0, 10).mapToObj(i -> moneys.get(2)).collect(Collectors.toList());
-			List<Integer> fives = IntStream.range(0, 10).mapToObj(i -> moneys.get(3)).collect(Collectors.toList());
-			List<Integer> ones = IntStream.range(0, 10).mapToObj(i -> moneys.get(4)).collect(Collectors.toList());
+			int num = 12;
+
+			List<Integer> hundreds = IntStream.range(0, num).mapToObj(i -> moneys.get(0)).collect(Collectors.toList());
+			List<Integer> fifties = IntStream.range(0, num).mapToObj(i -> moneys.get(1)).collect(Collectors.toList());
+			List<Integer> twenties = IntStream.range(0, num).mapToObj(i -> moneys.get(2)).collect(Collectors.toList());
+			List<Integer> fives = IntStream.range(0, num).mapToObj(i -> moneys.get(3)).collect(Collectors.toList());
+			List<Integer> ones = IntStream.range(0, num).mapToObj(i -> moneys.get(4)).collect(Collectors.toList());
 
 			ret.addAll(ones);
 			ret.addAll(fives);
