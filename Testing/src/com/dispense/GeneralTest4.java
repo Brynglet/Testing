@@ -50,8 +50,6 @@ public class GeneralTest4 {
 
 	private void calculateDispense(List<Integer> moneyLeftInMachine, List<Integer> tracker) {
 
-		if (moneyLeftInMachine.size() == 0) System.out.println("SIZE00000");
-
 		for (int k = 0; k < moneyLeftInMachine.size(); k++) {
 
 			if (moneyLeftInMachine.size() == this.getIntitialNumberOfMoneyInMachine()) {
