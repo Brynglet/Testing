@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class GeneralTest3 {
 
-	static final int CHANGE_VALUE = 121;
+	static final int CHANGE_VALUE = 265;
 
 	private static Map<Integer, List<List<Integer>>> closestExchaneMap = new HashMap<>();
 	private static int currHighestDispense = 0;
@@ -30,14 +30,14 @@ public class GeneralTest3 {
 				closestExchaneMap.get(currHighestDispense).stream()
 				.sorted(Comparator.comparingInt(List::size))
 				.findFirst().orElse(new ArrayList<>());
-		System.out.println("Hi customer, here is FEW moneys: $" + currHighestDispense + " " + result);
+		System.out.println("Hi customer, here is FEW bills and coins: $" + currHighestDispense + " " + result);
 
 		/* Get as few bills and coins as possible to customer: */
 		result =
 				closestExchaneMap.get(currHighestDispense).stream()
 				.sorted((list1, list2)->(list2.size() - list1.size()))
 				.findFirst().orElse(new ArrayList<>());
-		System.out.println("Hi customer, here is ALL moneys: $" + currHighestDispense + " " + result);
+		System.out.println("Hi customer, here is MUCH bills and coins: $" + currHighestDispense + " " + result);
 	}
 
 	public void run() {
