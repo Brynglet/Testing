@@ -1,3 +1,5 @@
+package com.dispense;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -54,6 +56,11 @@ public class GeneralTest {
 				if (tracker.stream().mapToInt(Integer::intValue).sum() > this.getClosestExchane().stream().mapToInt(Integer::intValue).sum()) {
 					this.setClosestExchane(tracker);
 				}
+
+				if (tracker.stream().mapToInt(Integer::intValue).sum() == CHANGE_VALUE) {
+					//System.out.println("kalle FOUND1:" + tracker);
+				}
+
 				this.setIntitialNumberOfMoneyInMachine(moneyLeftInMachine.size() - (k+1));
 				calculateDispense(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()), tracker);
 			}
@@ -65,7 +72,7 @@ public class GeneralTest {
 		List<Integer> ret = new ArrayList<Integer>();
 
 		/* Available bills in machine. The number of each one is in putMoneyInMachine() */
-		final List<Integer> moneys = Arrays.asList(100, 40, 1, 1, 1);
+		final List<Integer> moneys = Arrays.asList(100, 40, 20, 5, 1);
 
 		if (getManyRandom == true) {
 
@@ -111,11 +118,11 @@ public class GeneralTest {
 			 * And let the changeValue be 120 and then 121
 			 */
 
-			List<Integer> hundreds = IntStream.range(0, 3).mapToObj(i -> moneys.get(0)).collect(Collectors.toList());
-			List<Integer> fifties = IntStream.range(0, 3).mapToObj(i -> moneys.get(1)).collect(Collectors.toList());
-			List<Integer> twenties = IntStream.range(0, 3).mapToObj(i -> moneys.get(2)).collect(Collectors.toList());
-			List<Integer> fives = IntStream.range(0, 3).mapToObj(i -> moneys.get(3)).collect(Collectors.toList());
-			List<Integer> ones = IntStream.range(0, 3).mapToObj(i -> moneys.get(4)).collect(Collectors.toList());
+			List<Integer> hundreds = IntStream.range(0, 6).mapToObj(i -> moneys.get(0)).collect(Collectors.toList());
+			List<Integer> fifties = IntStream.range(0, 6).mapToObj(i -> moneys.get(1)).collect(Collectors.toList());
+			List<Integer> twenties = IntStream.range(0, 6).mapToObj(i -> moneys.get(2)).collect(Collectors.toList());
+			List<Integer> fives = IntStream.range(0, 6).mapToObj(i -> moneys.get(3)).collect(Collectors.toList());
+			List<Integer> ones = IntStream.range(0, 6).mapToObj(i -> moneys.get(4)).collect(Collectors.toList());
 
 			ret.addAll(ones);
 			ret.addAll(fives);

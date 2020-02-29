@@ -1,3 +1,4 @@
+package com.diverse;
 //Lambdas are functions that exists in isolation
 //Functions can be treated as values
 

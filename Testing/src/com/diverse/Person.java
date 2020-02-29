@@ -1,3 +1,4 @@
+package com.diverse;
 public class Person {
 
   private String name;

@@ -1,3 +1,5 @@
+package com.diverse;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -149,7 +151,7 @@ public class TestingStreams {
 
 		   List<Person> people2 = getPeople();
 
-		    // Imperative approach ❌
+		    // Imperative approach â�Œ
 
 		    /*
 		    List<Person> females = new ArrayList<>();
@@ -161,7 +163,7 @@ public class TestingStreams {
 		    females.forEach(System.out::println);
 		    */
 
-		    // Declarative approach ✅
+		    // Declarative approach âœ…
 
 		    // Filter
 		    List<Person> females = people2.stream()
