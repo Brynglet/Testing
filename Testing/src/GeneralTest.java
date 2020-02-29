@@ -24,7 +24,7 @@ import java.util.stream.IntStream;
  */
 public class GeneralTest {
 
-	static final int CHANGE_VALUE = 79;
+	static final int CHANGE_VALUE = 121;
 
 	private List<Integer> closestExchane;
 
@@ -54,7 +54,7 @@ public class GeneralTest {
 				if (tracker.stream().mapToInt(Integer::intValue).sum() > this.getClosestExchane().stream().mapToInt(Integer::intValue).sum()) {
 					this.setClosestExchane(tracker);
 				}
-				this.setIntitialNumberOfMoneyInMachine(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()).size());
+				this.setIntitialNumberOfMoneyInMachine(moneyLeftInMachine.size() - (k+1));
 				calculateDispense(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()), tracker);
 			}
 		}
