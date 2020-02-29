@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 public class GeneralTest4 {
 
-	static final int CHANGE_VALUE = 88;
+	static final int CHANGE_VALUE = 188;
 
 	private static Map<Integer, List<List<Integer>>> closestExchaneMap = new HashMap<>();
 	private static int currHighestDispense = 0;
@@ -162,7 +162,7 @@ public class GeneralTest4 {
 			 * And let the changeValue be 120 and then 121
 			 */
 
-			int num = 12;
+			int num = 10;
 
 			List<Integer> hundreds = IntStream.range(0, num).mapToObj(i -> moneys.get(0)).collect(Collectors.toList());
 			List<Integer> fifties = IntStream.range(0, num).mapToObj(i -> moneys.get(1)).collect(Collectors.toList());
