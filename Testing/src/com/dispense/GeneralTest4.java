@@ -72,10 +72,10 @@ public class GeneralTest4 {
 					doBreak = true;
 				} else {
 					int numberOfmoneyLeftInMachineSumFirstItem = Collections.frequency(moneyLeftInMachine, moneyLeftInMachine.get(0));
-					if ((numberOfmoneyLeftInMachineSumFirstItem > 1) && (trackerSum + ((numberOfmoneyLeftInMachineSumFirstItem-1) * moneyLeftInMachine.get(0))) <= CHANGE_VALUE) {
+					if ((trackerSum + (numberOfmoneyLeftInMachineSumFirstItem * moneyLeftInMachine.get(0))) <= CHANGE_VALUE) {
 						/* Make less recursion. */
-						tracker.addAll(moneyLeftInMachine.subList(0, numberOfmoneyLeftInMachineSumFirstItem-1));
-						subList = moneyLeftInMachine.subList(numberOfmoneyLeftInMachineSumFirstItem-1, moneyLeftInMachine.size());
+						tracker.addAll(moneyLeftInMachine.subList(0, numberOfmoneyLeftInMachineSumFirstItem));
+						subList = moneyLeftInMachine.subList(numberOfmoneyLeftInMachineSumFirstItem, moneyLeftInMachine.size());
 					} else {
 						tracker.add(moneyLeftInMachine.get(k));
 						subList = moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size());
