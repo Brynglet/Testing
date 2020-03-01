@@ -83,9 +83,9 @@ public class GeneralTest3 {
 					if (closestExchaneMap.get(currHighestDispense) != null) {
 						tmp.addAll(closestExchaneMap.get(currHighestDispense));
 					}
-					//if (!tmp.contains(tracker)) {
+					if (!tmp.contains(tracker)) {
 						tmp.add(tracker);
-					//}
+					}
 					closestExchaneMap.put(trackerSum, tmp);
 				}
 
