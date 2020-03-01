@@ -56,11 +56,6 @@ public class GeneralTest {
 				if (tracker.stream().mapToInt(Integer::intValue).sum() > this.getClosestExchane().stream().mapToInt(Integer::intValue).sum()) {
 					this.setClosestExchane(tracker);
 				}
-
-				if (tracker.stream().mapToInt(Integer::intValue).sum() == CHANGE_VALUE) {
-					//System.out.println("kalle FOUND1:" + tracker);
-				}
-
 				this.setIntitialNumberOfMoneyInMachine(moneyLeftInMachine.size() - (k+1));
 				calculateDispense(moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size()), tracker);
 			}
