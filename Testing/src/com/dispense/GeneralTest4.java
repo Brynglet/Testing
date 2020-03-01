@@ -2,7 +2,6 @@ package com.dispense;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +23,7 @@ public class GeneralTest4 {
 		gt4.run();
 
 		System.out.println("*********Result*********");
-		System.out.println("All these dispsnse lists can be returned to customer:" + closestExchaneMap);
+		System.out.println("All these dispenselists can be returned to customer:" + closestExchaneMap);
 
 		/* Get as many bills and coins as possible to customer: */
 		List<Integer> result =
@@ -71,15 +70,15 @@ public class GeneralTest4 {
 					tracker.addAll(moneyLeftInMachine);
 					doBreak = true;
 				} else {
-					int numberOfmoneyLeftInMachineSumFirstItem = Collections.frequency(moneyLeftInMachine, moneyLeftInMachine.get(0));
-					if ((trackerSum + (numberOfmoneyLeftInMachineSumFirstItem * moneyLeftInMachine.get(0))) <= CHANGE_VALUE) {
-						/* Make less recursion. */
-						tracker.addAll(moneyLeftInMachine.subList(0, numberOfmoneyLeftInMachineSumFirstItem));
-						subList = moneyLeftInMachine.subList(numberOfmoneyLeftInMachineSumFirstItem, moneyLeftInMachine.size());
-					} else {
+//					int numberOfmoneyLeftInMachineSumFirstItem = Collections.frequency(moneyLeftInMachine, moneyLeftInMachine.get(0));
+//					if ((trackerSum + (numberOfmoneyLeftInMachineSumFirstItem * moneyLeftInMachine.get(0))) <= CHANGE_VALUE) {
+//						/* Make less recursion. */
+//						tracker.addAll(moneyLeftInMachine.subList(0, numberOfmoneyLeftInMachineSumFirstItem));
+//						subList = moneyLeftInMachine.subList(numberOfmoneyLeftInMachineSumFirstItem, moneyLeftInMachine.size());
+//					} else {
 						tracker.add(moneyLeftInMachine.get(k));
 						subList = moneyLeftInMachine.subList(k+1, moneyLeftInMachine.size());
-					}
+					//}
 				}
 
 				trackerSum = tracker.stream().mapToInt(Integer::intValue).sum();
